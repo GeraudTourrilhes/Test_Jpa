@@ -5,9 +5,9 @@ import java.time.LocalDate;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "operation")
-public class Operation {
-	
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TYPE")
+public abstract class Operation {
 	@Id  @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
@@ -20,27 +20,22 @@ public class Operation {
 	@Column (name="motif", length=150, nullable=false)
 	private String motif;
 	
-	@Column (name="beneficiaire", length=150, nullable=false)
-	private String beneficiaire;
-	
 	@ManyToOne
 	@JoinColumn(name="id_compte", nullable=false)
 	private Compte compte;
 
-	public Operation(LocalDate date, Double montant, String motif, String beneficiaire, Compte compte) {
+	public Operation(LocalDate date, Double montant, String motif, Compte compte) {
 		super();
 		this.date = date;
 		this.montant = montant;
 		this.motif = motif;
-		this.beneficiaire = beneficiaire;
 		this.compte = compte;
 	}
 	
-	public Operation()
-	{
-		
+	public Operation() {
+		super();
 	}
-
+	
 	public LocalDate getDate() {
 		return date;
 	}
@@ -65,14 +60,6 @@ public class Operation {
 		this.motif = motif;
 	}
 
-	public String getBeneficiaire() {
-		return beneficiaire;
-	}
-
-	public void setBeneficiaire(String beneficiaire) {
-		this.beneficiaire = beneficiaire;
-	}
-
 	public Compte getCompte() {
 		return compte;
 	}
@@ -88,12 +75,8 @@ public class Operation {
 	@Override
 	public String toString() {
 		return "Operation [id=" + id + ", date=" + date + ", montant=" + montant + ", motif=" + motif
-				+ ", beneficiaire=" + beneficiaire + "]";
+				+ "]";
 	}
 	
 	
-	
-	
-	
-
 }

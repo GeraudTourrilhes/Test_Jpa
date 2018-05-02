@@ -35,8 +35,9 @@ public abstract class Compte {
 	}
 
 	public Compte() {
-		// TODO Auto-generated constructor stub
+		
 	}
+
 
 	public String getNumero() {
 		return numero;
@@ -90,94 +91,3 @@ public abstract class Compte {
 	
 	
 }
-
-/*
-@Entity
-@Table (name = "compte")
-public class Compte {
-
-	@Id  
-	private int id;
-	
-	@Column (name="numero", length=255, nullable=false)
-	private String numero;
-	
-	@Column (name="solde",  nullable=false)
-	private Double solde;
-	
-	@Column (name="taux",  nullable=false)
-	private Double taux;
-	
-	@Column (name="dateFin", nullable=true)
-	private LocalDate dateFin;
-	
-	@ManyToMany(mappedBy="comptes")
-	private Set<Client> clients;
-	
-	@OneToMany (mappedBy="compte")
-	private Set<Operation> operations;
-
-	public Compte(String numero, Double solde, Double taux, LocalDate dateFin) {
-		super();
-		this.numero = numero;
-		this.solde = solde;
-		this.taux = taux;
-		this.dateFin = dateFin;
-	}
-
-	public String getNumero() {
-		return numero;
-	}
-
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-	public Double getSolde() {
-		return solde;
-	}
-
-	public void setSolde(Double solde) {
-		this.solde = solde;
-	}
-
-	public Double getTaux() {
-		return taux;
-	}
-
-	public void setTaux(Double taux) {
-		this.taux = taux;
-	}
-
-	public LocalDate getDateFin() {
-		return dateFin;
-	}
-
-	public void setDateFin(LocalDate dateFin) {
-		this.dateFin = dateFin;
-	}
-
-	public Set<Client> getClients() {
-		return clients;
-	}
-
-	public void setClients(Set<Client> clients) {
-		this.clients = clients;
-	}
-
-	public Set<Operation> getOperations() {
-		return operations;
-	}
-
-	public void setOperations(Set<Operation> operations) {
-		this.operations = operations;
-	}
-
-	public int getId() {
-		return id;
-	}
-	
-	
-	
-	
-}*/
